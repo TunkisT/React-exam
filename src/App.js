@@ -2,11 +2,11 @@ import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import './App.css';
 import Header from './components/Header';
-import Add from './pages/Add';
-import Home from './pages/Home';
-import Login from './pages/Login';
+import Add from './pages/Add/Add';
+import Home from './pages/Home/Home';
+import Login from './pages/Login/Login';
 import Page404 from './pages/Page404';
-import Register from './pages/Register';
+import Register from './pages/Register/Register';
 
 function App() {
   return (

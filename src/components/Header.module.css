@@ -14,3 +14,7 @@
     border-radius: 4px;
     color: whitesmoke;
 }
+.navi a:hover{
+    background-color: rgb(88, 84, 84);
+    color: white;
+}
