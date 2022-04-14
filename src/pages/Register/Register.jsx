@@ -4,7 +4,7 @@ import Button from '../../components/UI/Button';
 
 function Register() {
   const [email, setEmail] = useState('mike@mike.com');
-  const [password, setPaswword] = useState('secret123');
+  const [password, setPassword] = useState('secret123');
 
   const registerData = { email, password };
 
@@ -47,7 +47,7 @@ function Register() {
           <label htmlFor='email'>Password</label>
           <br />
           <input
-            onChange={(e) => setPaswword(e.target.value)}
+            onChange={(e) => setPassword(e.target.value)}
             type='text'
             placeholder='Password'
             value={password}
