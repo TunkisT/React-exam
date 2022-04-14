@@ -5,7 +5,7 @@ function NotLoggedIn() {
   return (
     <>
       <h2>You are not logged in</h2>
-      <p>Plese login to se the content</p>
+      <p>Plese login to see the content</p>
       <Link to={'/login'}>
         <button>Login</button>
       </Link>

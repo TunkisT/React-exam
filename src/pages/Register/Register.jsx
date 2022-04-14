@@ -1,10 +1,11 @@
 import css from './Register.module.css';
 import React, { useState } from 'react';
 import Button from '../../components/UI/Button';
+import toast from 'react-hot-toast';
 
 function Register() {
-  const [email, setEmail] = useState('mike@mike.com');
-  const [password, setPassword] = useState('secret123');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const registerData = { email, password };
 
@@ -16,8 +17,13 @@ function Register() {
       },
       body: JSON.stringify(registerData),
     })
-      .then((resp) => resp.json())
+      .then((resp) =>
+        resp.json(resp.status === 400 ? toast('Incorrect inputs') : '')
+      )
       .then((data) => {
+        data.changes === 1
+          ? toast('User created')
+          : toast('Something went wrong, please try again');
         console.log('Success:', data);
       })
       .catch((error) => {
@@ -28,6 +34,8 @@ function Register() {
   function formHandler(e) {
     e.preventDefault();
     sendFetch();
+    setEmail('');
+    setPassword('');
   }
 
   return (
@@ -42,6 +50,7 @@ function Register() {
             type='email'
             placeholder='Email'
             value={email}
+            required
           />
           <br />
           <label htmlFor='email'>Password</label>
@@ -51,6 +60,7 @@ function Register() {
             type='text'
             placeholder='Password'
             value={password}
+            required
           />
           <br />
           <Button>Register</Button>

@@ -1,4 +1,5 @@
 import { useState } from 'react';
+import toast, { Toaster } from 'react-hot-toast';
 import { Route } from 'react-router-dom';
 import { Switch } from 'react-router-dom';
 import './App.css';
@@ -12,15 +13,14 @@ import Register from './pages/Register/Register';
 import AuthContext from './store/authContext';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState('false');
 
   function login() {
     setIsLogged(true);
-    console.log('app.js login');
   }
   function logout() {
-    console.log('app.js logout');
     setIsLogged(false);
+    localStorage.removeItem('token');
   }
 
   const ctxValue = {
@@ -33,6 +33,12 @@ function App() {
     <AuthContext.Provider value={ctxValue}>
       <div className='App'>
         <Header />
+        <div>
+          <button onClick={() => toast('Here is your toast.')}>
+            notification
+          </button>
+          <Toaster />
+        </div>
         <Switch>
           <Route path={'/register'}>
             <Register />

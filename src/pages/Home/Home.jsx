@@ -4,6 +4,7 @@ const token = localStorage.getItem('token');
 
 function Home() {
   const [dataArr, setDataArr] = useState([]);
+  const [response, setResponse] = useState('');
 
   useEffect(() => {
     getDataFromFetch();
@@ -15,16 +16,24 @@ function Home() {
         Authorization: `Bearer ${token}`,
       },
     })
-      .then((res) => res.json())
+      .then((res) => res.json(setResponse(res.status)))
       .then((cards) => {
+        if (cards.err === 'Invalid Token') {
+          return;
+        }
         setDataArr(cards);
         console.log(cards);
       });
   }
+  console.log('response ===', response);
 
-  // if (dataArr.length === 0) {
-  //   return <h1>No post at yet</h1>;
-  // }
+  if (response === 401) {
+    return <h1>Please login</h1>;
+  }
+
+  if (dataArr.length === 0) {
+    return <h1>No posts</h1>;
+  }
 
   return (
     <section className={css.cards}>

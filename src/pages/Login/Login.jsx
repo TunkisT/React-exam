@@ -2,10 +2,12 @@ import css from './Login.module.css';
 import Button from '../../components/UI/Button';
 import { useContext, useEffect, useState } from 'react';
 import AuthContext from '../../store/authContext';
+import { useHistory } from 'react-router-dom';
 
 function Login() {
   const [email, setEmail] = useState('mike@mike.com');
   const [password, setPassword] = useState('secret123');
+  const history = useHistory()
   const [respStatus, setRespStatus] = useState('');
 
   const loginData = { email, password };
