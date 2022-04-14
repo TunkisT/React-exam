@@ -1,22 +1,29 @@
 import css from './Login.module.css';
 import Button from '../../components/UI/Button';
-import { useState } from 'react';
+import { useContext, useEffect, useState } from 'react';
+import AuthContext from '../../store/authContext';
 
 function Login() {
   const [email, setEmail] = useState('mike@mike.com');
   const [password, setPassword] = useState('secret123');
+  const [respStatus, setRespStatus] = useState('');
 
   const loginData = { email, password };
+  const authCtx = useContext(AuthContext);
 
-  function sendFetch() {
-    fetch(`${process.env.REACT_APP_BASE_URL}/v1/auth/login`, {
+  async function sendFetch() {
+    await fetch(`${process.env.REACT_APP_BASE_URL}/v1/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
       },
       body: JSON.stringify(loginData),
     })
-      .then((resp) => resp.json())
+      .then((resp) =>
+        resp.json(
+          resp.status === 200 ? authCtx.login() : console.log('neveikia')
+        )
+      )
       .then((data) => {
         console.log('Success:', data);
         localStorage.setItem('token', data.token);
@@ -25,6 +32,7 @@ function Login() {
         console.error('Error:', error);
       });
   }
+
   function formHandler(e) {
     e.preventDefault();
     sendFetch();
