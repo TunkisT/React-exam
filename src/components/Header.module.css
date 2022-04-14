@@ -1,0 +1,16 @@
+.header{
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0 20px;
+    background-color: rgb(190, 186, 186);
+}
+.navi a{
+    text-decoration: none;
+    margin-right: 15px;
+    text-transform: uppercase;
+    background-color: grey;
+    padding: 8px 15px;
+    border-radius: 4px;
+    color: whitesmoke;
+}
