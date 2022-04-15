@@ -6,7 +6,7 @@ import { useHistory } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
-  const [email, setEmail] = useState('mike@mike.com');
+  const [email, setEmail] = useState('john@jonh.com');
   const [password, setPassword] = useState('secret123');
   const history = useHistory();
 
@@ -18,7 +18,7 @@ function Login() {
     sendFetch();
   }
 
-  function successfulLogin(resp) {
+  function successfulLogin() {
     authCtx.login();
     history.push('/');
   }
