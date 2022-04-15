@@ -18,11 +18,6 @@ function Login() {
     sendFetch();
   }
 
-  function successfulLogin() {
-    authCtx.login();
-    history.push('/');
-  }
-
   function sendFetch() {
     fetch(`${process.env.REACT_APP_BASE_URL}/v1/auth/login`, {
       method: 'POST',
@@ -34,13 +29,14 @@ function Login() {
       .then((resp) =>
         resp.json(
           resp.status === 200
-            ? successfulLogin()
+            ? authCtx.login()
             : toast('Incorrect email or password')
         )
       )
       .then((data) => {
         console.log('Success:', data);
         localStorage.setItem('token', data.token);
+        history.push('/');
       })
       .catch((error) => {
         toast(error);

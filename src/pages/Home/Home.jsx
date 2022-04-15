@@ -1,15 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import CardList from '../../components/CardList/CardList';
-const token = localStorage.getItem('token');
 
 function Home() {
+  const token = localStorage.getItem('token');
   const [dataArr, setDataArr] = useState([]);
   const [loading, setLoading] = useState(true);
 
-  console.log('token ===', token);
-
   useEffect(() => {
-    getDataFromFetch();
+    if (token) {
+      getDataFromFetch();
+    }
   }, []);
 
   function getDataFromFetch() {
@@ -20,8 +20,6 @@ function Home() {
     })
       .then((res) => res.json())
       .then((cards) => {
-        console.log(cards);
-
         if (cards.err === 'Invalid Token') {
           return;
         }

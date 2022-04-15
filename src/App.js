@@ -12,7 +12,7 @@ import Register from './pages/Register/Register';
 import AuthContext from './store/authContext';
 
 function App() {
-  const [isLogged, setIsLogged] = useState(true);
+  const [isLogged, setIsLogged] = useState(false);
 
   function login() {
     setIsLogged(true);

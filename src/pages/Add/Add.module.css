@@ -1,7 +1,7 @@
-.form input{
+.title{
     margin: 10px 0;
     height: 25px;
-    width: 15em;
+    width: 17em;
 
 }
 .div{
@@ -10,4 +10,7 @@
     align-items: center;
     height: 25em;
 
+}
+.textarea{
+    margin: 10px 0;
 }
