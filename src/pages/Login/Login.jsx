@@ -1,20 +1,30 @@
 import css from './Login.module.css';
 import Button from '../../components/UI/Button';
-import { useContext, useEffect, useState } from 'react';
+import { useContext, useState } from 'react';
 import AuthContext from '../../store/authContext';
 import { useHistory } from 'react-router-dom';
+import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
   const [email, setEmail] = useState('mike@mike.com');
   const [password, setPassword] = useState('secret123');
-  const history = useHistory()
-  const [respStatus, setRespStatus] = useState('');
+  const history = useHistory();
 
   const loginData = { email, password };
   const authCtx = useContext(AuthContext);
 
-  async function sendFetch() {
-    await fetch(`${process.env.REACT_APP_BASE_URL}/v1/auth/login`, {
+  function formHandler(e) {
+    e.preventDefault();
+    sendFetch();
+  }
+
+  function successfulLogin(resp) {
+    authCtx.login();
+    history.push('/');
+  }
+
+  function sendFetch() {
+    fetch(`${process.env.REACT_APP_BASE_URL}/v1/auth/login`, {
       method: 'POST',
       headers: {
         'Content-Type': 'application/json',
@@ -23,7 +33,9 @@ function Login() {
     })
       .then((resp) =>
         resp.json(
-          resp.status === 200 ? authCtx.login() : console.log('neveikia')
+          resp.status === 200
+            ? successfulLogin()
+            : toast('Incorrect email or password')
         )
       )
       .then((data) => {
@@ -31,13 +43,8 @@ function Login() {
         localStorage.setItem('token', data.token);
       })
       .catch((error) => {
-        console.error('Error:', error);
+        toast(error);
       });
-  }
-
-  function formHandler(e) {
-    e.preventDefault();
-    sendFetch();
   }
 
   return (
@@ -64,6 +71,7 @@ function Login() {
           />
           <br />
           <Button>login</Button>
+          <Toaster />
         </form>
       </section>
     </div>
