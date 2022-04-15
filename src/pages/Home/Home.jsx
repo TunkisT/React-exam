@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from 'react';
 import CardList from '../../components/CardList/CardList';
+import LoadElement from '../../components/LoadElement/LoadElement';
 
 function Home() {
   const token = localStorage.getItem('token');
@@ -30,7 +31,7 @@ function Home() {
   }
 
   if (loading === true) {
-    return <h1>Loading...</h1>;
+    return <LoadElement />;
   }
   if (dataArr.length === 0) {
     return <h1>No active posts</h1>;

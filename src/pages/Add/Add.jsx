@@ -26,11 +26,8 @@ function Add() {
             : toast('Incorrect inputs')
         )
       )
-      .then((data) => {
-        console.log('Success:', data);
-      })
       .catch((error) => {
-        console.error('Error:', error);
+        toast(error);
       });
   }
 

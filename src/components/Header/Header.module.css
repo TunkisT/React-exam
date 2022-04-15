@@ -3,23 +3,27 @@
     align-items: center;
     justify-content: space-between;
     padding: 0 20px;
-    background-color: rgb(190, 186, 186);
+    background-color: #11161a;
     height: 5em;
+    color: whitesmoke;
+    text-transform: uppercase;
+
 }
 .navi a{
     text-decoration: none;
     margin-right: 15px;
-    text-transform: uppercase;
     background-color: grey;
-    padding: 8px 15px;
+    padding: 8px 20px;
     border-radius: 4px;
     color: whitesmoke;
 }
 .navi a:hover{
     background-color: rgb(88, 84, 84);
     color: white;
+    transition: 0.4s;
+
 }
 .logo{
     height: 100%;
-    background-color: blue
+    background-color: inherit;
 }

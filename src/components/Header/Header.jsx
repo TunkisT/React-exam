@@ -1,5 +1,5 @@
 import css from './Header.module.css';
-import logo from '../images/logo2.png';
+import logo from '../images/logo3.png';
 import { NavLink } from 'react-router-dom';
 import { useContext } from 'react';
 import AuthContext from '../../store/authContext';
@@ -10,7 +10,7 @@ function Header() {
   return (
     <header className={css.header}>
       <img className={css.logo} src={logo} alt='logo' />
-      <h1>Lazy panda</h1>
+      <h2>Lazy panda skills club</h2>
       <nav className={css.navi}>
         {authCtx.isLogged && <NavLink to={'/'}>Home</NavLink>}
         {authCtx.isLogged && <NavLink to={'/add'}>Add</NavLink>}
