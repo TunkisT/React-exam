@@ -26,7 +26,6 @@ function Home() {
         }
         setDataArr(cards);
         setLoading(false);
-        console.log(cards);
       });
   }
 

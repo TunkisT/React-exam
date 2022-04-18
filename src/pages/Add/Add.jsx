@@ -63,7 +63,7 @@ function Add() {
             rows='10'
           ></textarea>
           <br />
-          <Button>Add</Button>
+          <Button >Add</Button>
           <Toaster />
         </form>
       </section>

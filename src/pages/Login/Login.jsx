@@ -6,8 +6,8 @@ import { useHistory } from 'react-router-dom';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Login() {
-  const [email, setEmail] = useState('john@jonh.com');
-  const [password, setPassword] = useState('secret123');
+  const [email, setEmail] = useState('q@q.com');
+  const [password, setPassword] = useState('123456');
   const history = useHistory();
 
   const loginData = { email, password };
@@ -26,15 +26,12 @@ function Login() {
       },
       body: JSON.stringify(loginData),
     })
-      .then((resp) =>
-        resp.json(
-          resp.status === 200
-            ? authCtx.login()
-            : toast('Incorrect email or password')
-        )
-      )
+      .then((resp) => resp.json(resp.status === 200 ? authCtx.login() : ''))
       .then((data) => {
-        console.log('Success:', data);
+        if (data.err) {
+          toast('Incorrect email or password');
+          return;
+        }
         localStorage.setItem('token', data.token);
         history.push('/');
       })

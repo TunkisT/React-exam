@@ -21,7 +21,7 @@ function Register() {
         resp.json(resp.status === 400 ? toast('Incorrect inputs') : '')
       )
       .then((data) => {
-        if (data.changes === 1) toast('User created');
+        if (data.changes === 1) toast('User created. Please login');
       })
       .catch((error) => {
         toast(error);
