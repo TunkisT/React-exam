@@ -4,8 +4,8 @@ import Button from '../../components/UI/Button';
 import toast, { Toaster } from 'react-hot-toast';
 
 function Register() {
-  const [email, setEmail] = useState('mike@mike.com');
-  const [password, setPassword] = useState('123456');
+  const [email, setEmail] = useState('');
+  const [password, setPassword] = useState('');
 
   const registerData = { email, password };
 

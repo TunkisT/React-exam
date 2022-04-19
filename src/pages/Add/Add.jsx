@@ -5,8 +5,8 @@ import css from './Add.module.css';
 
 function Add() {
   const token = localStorage.getItem('token');
-  const [title, setTitle] = useState('Mike post');
-  const [description, setDescription] = useState('Mike post description');
+  const [title, setTitle] = useState('');
+  const [description, setDescription] = useState('');
 
   const postData = { title, description };
 
@@ -34,6 +34,8 @@ function Add() {
   function formHandler(e) {
     e.preventDefault();
     sendFetch();
+    setTitle('')
+    setDescription('')
   }
 
   return (
